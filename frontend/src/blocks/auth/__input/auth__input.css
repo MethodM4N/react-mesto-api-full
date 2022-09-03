@@ -1,0 +1,18 @@
+.auth__input {
+    text-decoration: none;
+    border: none;
+    border-bottom: 2px solid #CCCCCC;
+    background-color: transparent;
+    margin: 0 0 30px;
+    color: white;
+    height: 27px;
+    outline: none;
+}
+
+.auth__input::placeholder {
+    text-align: center;
+}
+
+.auth__input:last-of-type {
+    margin-bottom: 215px;
+}

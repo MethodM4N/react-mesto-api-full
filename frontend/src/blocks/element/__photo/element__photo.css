@@ -1,0 +1,9 @@
+.element__photo {
+   margin: 0;
+   padding: 0;
+   object-fit: cover;
+   width: 100%;
+   min-width: 282px;
+   height: 282px;
+   cursor: pointer;
+}
