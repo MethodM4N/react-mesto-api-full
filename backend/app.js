@@ -25,7 +25,7 @@ const options = {
   origin: [
     'http://localhost:3000',
     'https://MethodM4N.github.io',
-    'http://api.rusgram.nomoredomains.sbs',
+    'http://rusgram.nomoredomains.sbs',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
