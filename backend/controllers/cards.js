@@ -31,7 +31,8 @@ const deleteCardById = (req, res, next) => {
     .then((card) => {
       if (card.owner.toString() === req.user._id) {
         Card.deleteOne({ _id: card._id })
-          .then(res.status(200).send({ message: 'Карточка удалена' }));
+          .then(res.status(200).send({ message: 'Карточка удалена' }))
+          .catch((err) => next(err));
       } else {
         next(new ForbiddenError('Отсутствуют права доступа на удаление чужих карточек'));
       }
