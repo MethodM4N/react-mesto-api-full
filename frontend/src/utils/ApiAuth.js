@@ -74,5 +74,5 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-    baseUrl: 'http://api.rusgram.nomoredomains.sbs'
+    baseUrl: 'https://api.rusgram.nomoredomains.sbs'
 })

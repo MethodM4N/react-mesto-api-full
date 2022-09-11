@@ -103,6 +103,6 @@ class Api {
 }
 
 export const api = new Api({
-   link: 'http://api.rusgram.nomoredomains.sbs',
+   link: 'https://api.rusgram.nomoredomains.sbs',
    token: localStorage.getItem('token'),
 });
