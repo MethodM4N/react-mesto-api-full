@@ -25,6 +25,7 @@ const options = {
   origin: [
     'http://localhost:3000',
     'http://rusgram.nomoredomains.sbs',
+    'https://rusgram.nomoredomains.sbs',
     'https://MethodM4N.github.io',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
