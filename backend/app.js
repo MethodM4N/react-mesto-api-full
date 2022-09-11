@@ -24,8 +24,8 @@ app.use(express.json());
 const options = {
   origin: [
     'http://localhost:3000',
-    'https://MethodM4N.github.io',
     'http://rusgram.nomoredomains.sbs',
+    'https://MethodM4N.github.io',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
