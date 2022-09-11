@@ -6,7 +6,6 @@ class ApiAuth {
     signUp(data) {
         return fetch(`${this._url}/signup`, {
             method: 'POST',
-            credentials: 'include',  
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -75,5 +74,5 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-    baseUrl: 'http://localhost:3001'
+    baseUrl: 'http://api.rusgram.nomoredomains.sbs'
 })

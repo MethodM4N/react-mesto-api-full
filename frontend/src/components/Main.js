@@ -22,7 +22,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
             <button className="profile__add-button" type="button" onClick={onAddPlace}></button>
          </section>
          <section className="elements">
-            {cards.map((card) => (<Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} />))}
+            {cards.map((card) => (<Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} />)).reverse()}
          </section>
       </main>
    )

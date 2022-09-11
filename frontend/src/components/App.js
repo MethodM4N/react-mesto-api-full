@@ -81,7 +81,6 @@ function App() {
   useEffect(() => {
     api.getUserInfo()
       .then(({data: res}) => {
-        console.log(res);
         setСurrentUser(res);
       })
       .catch((err) => console.log(err));
@@ -91,7 +90,7 @@ function App() {
     setIsLoading(true);
     api.updateUserInfo(profile)
       .then((res) => {
-        setСurrentUser(res);
+        setСurrentUser(res.data);
         setIsLoading(false);
         closeAllPopups();
       })
@@ -102,7 +101,7 @@ function App() {
     setIsLoading(true);
     api.updateAvatar(avatar)
       .then((res) => {
-        setСurrentUser(res);
+        setСurrentUser(res.data);
         setIsLoading(false);
         closeAllPopups();
       })
@@ -112,18 +111,18 @@ function App() {
   useEffect(() => {
     api.getInitialCards()
       .then((res) => {
-        setCards(res)
+        setCards(res.data)
       })
       .catch((err) => console.log(err));
   }, []);
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
+      setCards((cards) => cards.map((c) => c._id === card._id ? newCard.data : c));
     }).catch((err) => console.log(err));
   }
 
@@ -139,7 +138,7 @@ function App() {
     setIsLoading(true);
     api.addNewCard(card)
       .then((res) => {
-        setCards([res, ...cards]);
+        setCards([...cards, res.data]);
         setIsLoading(false);
         closeAllPopups();
       })

@@ -1,14 +1,13 @@
 class Api {
-   constructor(link, token) {
-      this._link = link;
-      this._token = token;
+   constructor(api) {
+      this._link = api.link;
+      this._token = api.token;
    };
 
    getUserInfo() {
       return fetch(`${this._link}/users/me`, {
          headers: {
-            authorization: this._token,
-            'Content-type': 'application/json',
+            authorization: `Bearer ${this._token}`,
          },
          credentials: 'include',  
       })
@@ -18,7 +17,7 @@ class Api {
    getInitialCards() {
       return fetch(`${this._link}/cards`, {
          headers: {
-            authorization: this._token,
+            authorization: `Bearer ${this._token}`,
             'Content-type': 'application/json',
          },
          credentials: 'include',  
@@ -31,7 +30,7 @@ class Api {
          method: 'PATCH',
          credentials: 'include',  
          headers: {
-            authorization: this._token,
+            authorization: `Bearer ${this._token}`,
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
@@ -47,7 +46,7 @@ class Api {
          method: 'POST',
          credentials: 'include',  
          headers: {
-            authorization: this._token,
+            authorization: `Bearer ${this._token}`,
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
@@ -63,7 +62,7 @@ class Api {
          method: 'DELETE',
          credentials: 'include',  
          headers: {
-            authorization: this._token,
+            authorization: `Bearer ${this._token}`,
             'Content-Type': 'application/json'
          }
       })
@@ -71,11 +70,11 @@ class Api {
    }
 
    changeLikeCardStatus(cardId, isLiked) {
-      return fetch(`${this._link}/cards/likes/${cardId}`, {
+      return fetch(`${this._link}/cards/${cardId}/likes`, {
          method: `${!isLiked ? 'DELETE' : 'PUT'}`,
          credentials: 'include',  
          headers: {
-            authorization: this._token,
+            authorization: `Bearer ${this._token}`,
             'Content-Type': 'application/json'
          }
       })
@@ -87,7 +86,7 @@ class Api {
          method: 'PATCH',
          credentials: 'include',  
          headers: {
-            authorization: this._token,
+            authorization: `Bearer ${this._token}`,
             'Content-Type': 'application/json'
          },
          body: JSON.stringify(avatar)
@@ -104,7 +103,6 @@ class Api {
 }
 
 export const api = new Api({
-   link: 'http://localhost:3001',
-   token:
-      localStorage.getItem('token'),
+   link: 'http://api.rusgram.nomoredomains.sbs',
+   token: localStorage.getItem('token'),
 });
