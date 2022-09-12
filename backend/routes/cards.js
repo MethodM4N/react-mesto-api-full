@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
-const { validateUrl } = require('../urlValidation/validateurl');
+const { validateUrl } = require('../customvalidations/validateurl');
+const { validateId } = require('../customvalidations/validateid');
 const {
   findCards, deleteCardById, createCard, likeCard, dislikeCard,
 } = require('../controllers/cards');
@@ -26,7 +27,7 @@ router.delete('/cards/:cardId', celebrate({
     .keys({
       cardId: Joi.string()
         .required()
-        .length(24),
+        .custom(validateId),
     }),
 }), deleteCardById);
 
@@ -35,7 +36,7 @@ router.put('/cards/:cardId/likes', celebrate({
     .keys({
       cardId: Joi.string()
         .required()
-        .length(24),
+        .custom(validateId),
     }),
 }), likeCard);
 
@@ -44,7 +45,7 @@ router.delete('/cards/:cardId/likes', celebrate({
     .keys({
       cardId: Joi.string()
         .required()
-        .length(24),
+        .custom(validateId),
     }),
 }), dislikeCard);
 

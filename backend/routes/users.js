@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
-const { validateUrl } = require('../urlValidation/validateurl');
+const { validateUrl } = require('../customvalidations/validateurl');
+const { validateId } = require('../customvalidations/validateid');
 const {
   findUsers, findUserById, updateUserInfo, updateUserAvatar, getUserInfo,
 } = require('../controllers/users');
@@ -14,7 +15,7 @@ router.get('/users/:userId', celebrate({
     .keys({
       userId: Joi.string()
         .required()
-        .length(24),
+        .custom(validateId),
     }),
 }), findUserById);
 

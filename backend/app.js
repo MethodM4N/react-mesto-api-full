@@ -10,7 +10,7 @@ const cors = require('cors');
 const {
   login, createUser,
 } = require('./controllers/users');
-const { validateUrl } = require('./urlValidation/validateurl');
+const { validateUrl } = require('./customvalidations/validateurl');
 const auth = require('./middlewares/auth');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');

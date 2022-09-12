@@ -6,7 +6,6 @@
    position: absolute;
    border-radius: 50%;
    top: 0;
-   left: 0;
    cursor: pointer;
    background-color: rgba(0, 0, 0, 0.6);
    background-size: 26px;
@@ -19,4 +18,11 @@
 .profile__overlay-button:hover {
    opacity: 1;
    transition: 0.5s ease;
+   border-radius: 50%;
+}
+
+@media (max-width: 885px) {
+   .profile__overlay-button {
+      width: 122px;
+   }
 }
