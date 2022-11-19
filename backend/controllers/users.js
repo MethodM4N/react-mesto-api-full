@@ -71,7 +71,14 @@ const login = (req, res, next) => {
             NODE_ENV === 'production' ? JWT_SECRET : 'secret-af-key',
             { expiresIn: '7d' },
           );
-          res.status(200).send({ token });
+          return res
+            .cookie('jwt', token, {
+              maxAge: 3600000 * 24 * 7,
+              httpOnly: true,
+              secure: true,
+              sameSite: 'none',
+            })
+            .send({ message: 'Вход совершен успешно' });
         })
         .catch((err) => next(err));
     })

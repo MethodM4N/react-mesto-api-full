@@ -7,6 +7,7 @@ const { celebrate, Joi, errors } = require('celebrate');
 
 const { PORT = 3001 } = process.env;
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const {
   login, createUser,
 } = require('./controllers/users');
@@ -38,6 +39,8 @@ const options = {
 };
 
 app.use('*', cors(options));
+
+app.use(cookieParser());
 
 app.use(requestLogger); // подключаем логгер запросов
 

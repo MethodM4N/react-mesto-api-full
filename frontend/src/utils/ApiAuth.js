@@ -50,13 +50,12 @@ class ApiAuth {
             })
     }
 
-    checkToken(token) {
+    checkToken() {
         return fetch(`${this._url}/users/me`, {
             method: 'GET',
             credentials: 'include',  
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Content-Type": "application/json"
             }
         })
             .then((data) => {
@@ -74,5 +73,5 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-    baseUrl: 'https://api.rusgram.nomoredomains.sbs'
+    baseUrl: 'http://localhost:3001'
 })

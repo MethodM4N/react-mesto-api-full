@@ -1,5 +1,5 @@
 # Mesto (проектная работа №15 by [Yandex.Practicum](https://practicum.yandex.ru/ "Практикум"))
-### Ссылка на фронт [клац](https://rusgram.nomoredomains.sbs/ "Ссылка на front").
+### Ссылка на фронт [клац](https://methodm4n.github.io/mesto/ "Ссылка на работу на ванильном js").
 ### Ссылка на back [клац](https://api.rusgram.nomoredomains.sbs/ "Ссылка на back").
 ### Публичный IP-адрес сервера: 51.250.11.255
 ----

@@ -2,25 +2,21 @@ class Api {
    constructor(api) {
       this._link = api.link;
       this._token = api.token;
+      console.log(this._token);
    };
 
    getUserInfo() {
       return fetch(`${this._link}/users/me`, {
-         headers: {
-            authorization: `Bearer ${this._token}`,
-         },
-         credentials: 'include',  
+         headers: this._token,
+         credentials: 'include',
       })
          .then(this._getStatus);
    }
 
    getInitialCards() {
       return fetch(`${this._link}/cards`, {
-         headers: {
-            authorization: `Bearer ${this._token}`,
-            'Content-type': 'application/json',
-         },
-         credentials: 'include',  
+         headers: this._token,
+         credentials: 'include',
       })
          .then(this._getStatus);
    }
@@ -28,11 +24,8 @@ class Api {
    updateUserInfo(profile) {
       return fetch(`${this._link}/users/me`, {
          method: 'PATCH',
-         credentials: 'include',  
-         headers: {
-            authorization: `Bearer ${this._token}`,
-            'Content-Type': 'application/json'
-         },
+         headers: this._token,
+         credentials: 'include',
          body: JSON.stringify({
             name: profile.name,
             about: profile.about
@@ -44,11 +37,8 @@ class Api {
    addNewCard(card) {
       return fetch(`${this._link}/cards`, {
          method: 'POST',
-         credentials: 'include',  
-         headers: {
-            authorization: `Bearer ${this._token}`,
-            'Content-Type': 'application/json'
-         },
+         headers: this._token,
+         credentials: 'include',
          body: JSON.stringify({
             name: card.name,
             link: card.link
@@ -60,11 +50,8 @@ class Api {
    deleteCard(cardId) {
       return fetch(`${this._link}/cards/${cardId}`, {
          method: 'DELETE',
-         credentials: 'include',  
-         headers: {
-            authorization: `Bearer ${this._token}`,
-            'Content-Type': 'application/json'
-         }
+         headers: this._token,
+         credentials: 'include',
       })
          .then(this._getStatus);
    }
@@ -103,6 +90,8 @@ class Api {
 }
 
 export const api = new Api({
-   link: 'https://api.rusgram.nomoredomains.sbs',
-   token: localStorage.getItem('token'),
+   link: 'http://localhost:3001',
+   token: {
+      'Content-Type': 'application/json',
+  },
 });

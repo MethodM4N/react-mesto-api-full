@@ -153,7 +153,6 @@ function App() {
         setErrorStatus(false);
       })
       .catch((res) => {
-        console.log(res.status);
         setErrorStatus(true);
       })
       .finally(() => {
@@ -166,8 +165,8 @@ function App() {
     setIsLoading(true);
     apiAuth.signIn(data)
       .then((res) => {
-        if (res.token) {
-          localStorage.setItem('token', res.token);
+        if (res.message === 'Вход совершен успешно') {
+          checkToken();
           setLoggedIn(true);
           setEmail(data);
           history.push('/');
@@ -190,9 +189,9 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
-  function checkToken(localToken) {
+  function checkToken() {
     apiAuth
-      .checkToken(localToken)
+      .checkToken()
       .then((res) => {
         setLoggedIn(true);
         setEmail(res.data);
@@ -203,15 +202,13 @@ function App() {
   }
 
   useEffect(() => {
-    if (localStorage.token) {
-      checkToken(localStorage.token);
-    }
-  }, []);
-
+    checkToken();
+    loggedIn ? history.push('/') : history.push('/sign-in');
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   function deleteToken() {
-    setLoggedIn(false)
-    localStorage.removeItem('token');
+    setLoggedIn(false);
     history.push('/sign-in');
   }
 

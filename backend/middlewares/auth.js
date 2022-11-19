@@ -4,13 +4,12 @@ const UnauthorizedError = require('../errors/401error');
 
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
+  const token = req.cookies.jwt;
   const { NODE_ENV, JWT_SECRET } = process.env;
-  if (!authorization || !authorization.startsWith('Bearer ')) {
+  if (!token) {
     throw new UnauthorizedError('Необходима авторизация');
   }
 
-  const token = authorization.replace('Bearer ', '');
   let payload;
 
   try {
