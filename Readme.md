@@ -9,7 +9,8 @@ Instagram на минималках
 ```
 ```JS
 - JavaScript
-- ES2015;
+- ES2015
+- React.js
 ```
 ```
 - Node.js (express.js)
